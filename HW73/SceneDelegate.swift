@@ -13,10 +13,48 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        let window = UIWindow(windowScene: windowScene)
+        
+        
+        //1
+        let firstVC = ViewController()
+        let tabOneBarItem = UITabBarItem(title: "Favorite",
+                                         image: UIImage(systemName: "star"),
+                                         selectedImage: UIImage(systemName: "star.fill"))
+
+        let navBar = UINavigationController(rootViewController: firstVC)
+        navBar.tabBarItem = tabOneBarItem
+        
+        //2
+        let secondVC = SecondViewController()
+        let tabTwoBarItem = UITabBarItem(title: "Recent",
+                                         image: UIImage(systemName: "clock"),
+                                         selectedImage: UIImage(systemName: "clock.fill"))
+        secondVC.tabBarItem = tabTwoBarItem
+        
+        //3
+        let thirdVC = ThirdViewController()
+        let tabThreeBarItem = UITabBarItem(title: "Files",
+                                         image: UIImage(systemName: "folder"),
+                                         selectedImage: UIImage(systemName: "folder.fill"))
+        thirdVC.tabBarItem = tabThreeBarItem
+        
+        //4
+        let fourthVC = FourthViewController()
+        let tabFourBarItem = UITabBarItem(title: "Notifications",
+                                         image: UIImage(systemName: "bell"),
+                                         selectedImage: UIImage(systemName: "bell.fill"))
+        fourthVC.tabBarItem = tabFourBarItem
+        
+        let tabbar = UITabBarController()
+        tabbar.viewControllers = [navBar, secondVC, thirdVC, fourthVC]
+        
+        tabbar.tabBar.backgroundColor = .white
+        
+        window.rootViewController = tabbar
+        self.window = window
+        window.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

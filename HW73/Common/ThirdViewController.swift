@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  ThirdViewController.swift
 //  HW73
 //
 //  Created by Jarae on 10/3/23.
@@ -7,11 +7,11 @@
 
 import UIKit
 import SnapKit
-class ViewController: UIViewController {
-    
+class ThirdViewController: UIViewController {
+
     let titleLabel: UILabel = {
         let title = UILabel()
-        title.text = "Favorites"
+        title.text = "Files"
         title.font = .systemFont(ofSize: 20)
         return title
     }()
@@ -25,5 +25,6 @@ class ViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
     }
-}
 
+
+}
